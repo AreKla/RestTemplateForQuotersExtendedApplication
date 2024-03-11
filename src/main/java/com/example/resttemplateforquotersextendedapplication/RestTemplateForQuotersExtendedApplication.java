@@ -5,7 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 @SpringBootApplication
 public class RestTemplateForQuotersExtendedApplication {
@@ -19,9 +20,10 @@ public class RestTemplateForQuotersExtendedApplication {
 
     @EventListener(ApplicationStartedEvent.class)
     public void makeRequestToQuoterExtendEndpoint() {
+
         // --->SHOW ALL QUOTES<---
-//        String showAllQuotesResponse = quoterExtendClient.showAllQuotes();
-//        System.out.println(showAllQuotesResponse);
+        List<QuoteExample> quoteExample = quoterExtendClient.showAllQuotes();
+        quoteExample.forEach(System.out::println);
 
         // --->GET BY ID<---
 //        String byIdResponse = quoterExtendClient.getById(7);
@@ -32,10 +34,12 @@ public class RestTemplateForQuotersExtendedApplication {
 //        System.out.println(getRandomQuote);
 
         // --->GET BY PARAM<--- WTF?
-        String byParamResponse = quoterExtendClient.getByParam(5);
-        System.out.println(byParamResponse);
+//        String byParamResponse = quoterExtendClient.getByParam(7);
+//        System.out.println(byParamResponse);
 
         // --->GET BY HEADER<---
+//        String byHeaderResponse = quoterExtendClient.getByHeader();
+//        System.out.println(byHeaderResponse);
 
         // --->ADD QUOTE<---
 
