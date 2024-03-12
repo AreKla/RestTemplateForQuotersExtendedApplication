@@ -1,4 +1,4 @@
 package com.example.resttemplateforquotersextendedapplication;
 
-public record QuoteValue(Integer id, String quote) {
+public record QuoteValue(Long id, String quote) {
 }

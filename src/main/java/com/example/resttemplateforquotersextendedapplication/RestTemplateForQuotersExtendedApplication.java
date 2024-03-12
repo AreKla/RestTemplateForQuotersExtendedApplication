@@ -42,7 +42,9 @@ public class RestTemplateForQuotersExtendedApplication {
 //        byHeaderResponse.forEach(System.out::println);
 
         // --->ADD QUOTE<---
+//        quoterExtendClient.addQuote("My new Quote 15");
 
-        // --->DELETE BY ID <---
+        // --->DELETE BY ID<---
+//        quoterExtendClient.deleteById(14);
     }
 }
