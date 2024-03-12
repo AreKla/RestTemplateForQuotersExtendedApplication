@@ -22,24 +22,24 @@ public class RestTemplateForQuotersExtendedApplication {
     public void makeRequestToQuoterExtendEndpoint() {
 
         // --->SHOW ALL QUOTES<---
-        List<QuoteExample> quoteExample = quoterExtendClient.showAllQuotes();
-        quoteExample.forEach(System.out::println);
+//        List<QuoteExample> allQuotesResponse = quoterExtendClient.showAllQuotes();
+//        allQuotesResponse.forEach(System.out::println);
 
         // --->GET BY ID<---
-//        String byIdResponse = quoterExtendClient.getById(7);
+//        QuoteExample byIdResponse = quoterExtendClient.getById(7);
 //        System.out.println(byIdResponse);
 
         // --->GET RANDOM QUOTE<---
-//        String getRandomQuote = quoterExtendClient.getRandomQuote();
-//        System.out.println(getRandomQuote);
+//        QuoteExample randomQuoteResponse = quoterExtendClient.getRandomQuote();
+//        System.out.println(randomQuoteResponse);
 
-        // --->GET BY PARAM<--- WTF?
-//        String byParamResponse = quoterExtendClient.getByParam(7);
+        // --->GET BY PARAM<---
+//        QuoteExample byParamResponse = quoterExtendClient.getByParam(7);
 //        System.out.println(byParamResponse);
 
         // --->GET BY HEADER<---
-//        String byHeaderResponse = quoterExtendClient.getByHeader();
-//        System.out.println(byHeaderResponse);
+//        List<QuoteExample> byHeaderResponse = quoterExtendClient.getByHeader();
+//        byHeaderResponse.forEach(System.out::println);
 
         // --->ADD QUOTE<---
 

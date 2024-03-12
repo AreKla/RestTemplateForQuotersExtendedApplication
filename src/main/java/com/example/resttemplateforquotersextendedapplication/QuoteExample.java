@@ -4,6 +4,6 @@ public record QuoteExample(String type, QuoteValue value) {
 
     @Override
     public String toString() {
-        return value.id().toString() + ": " + value.quote();
+        return value.id().toString() + ": " + value.quote() + "\n";
     }
 }

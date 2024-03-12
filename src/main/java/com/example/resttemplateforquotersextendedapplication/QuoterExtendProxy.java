@@ -28,37 +28,64 @@ public class QuoterExtendProxy {
         String json = response.getBody();
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(json, new TypeReference<List<QuoteExample>>() {});
+            return objectMapper.readValue(json, new TypeReference<>() {
+            });
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public String getById(Integer id) {
+    public QuoteExample getById(Integer id) {
         // GET http://localhost:8080/api/id
         String uri = url + "/api/" + id;
         ResponseEntity<String> exchange = restTemplate.exchange(uri, HttpMethod.GET, null, String.class);
-        return exchange.getBody();
+        String json = exchange.getBody();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(json, QuoteExample.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public String getRandomQuote() {
+    public QuoteExample getRandomQuote() {
         // GET http://localhost:8080/api/random
         String uri = url + "/api/random";
         ResponseEntity<String> exchange = restTemplate.exchange(uri, HttpMethod.GET, null, String.class);
-        return exchange.getBody();
+        String json = exchange.getBody();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(json, QuoteExample.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
-    public String getByParam(Integer param) {
+    public QuoteExample getByParam(Integer param) {
         // GET http://localhost:8080/api?id=param
-        String uri = url + "/api?id=" + param;
+        String uri = url + "/apiWithRequestParam?id=" + param;
         ResponseEntity<String> exchange = restTemplate.exchange(uri, HttpMethod.GET, null, String.class);
-        return exchange.getBody();
+        String json = exchange.getBody();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(json, QuoteExample.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public String getByHeader() {
+    public List<QuoteExample> getByHeader() {
         // GET http://localhost:8080/apiWithHeader
         String uri = url + "/apiWithHeader";
         ResponseEntity<String> exchange = restTemplate.exchange(uri, HttpMethod.GET, null, String.class);
-        return exchange.getBody();
+        String json = exchange.getBody();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(json, new TypeReference<>() {
+            });
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
