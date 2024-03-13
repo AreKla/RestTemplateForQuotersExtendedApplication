@@ -22,29 +22,30 @@ public class RestTemplateForQuotersExtendedApplication {
     public void makeRequestToQuoterExtendEndpoint() {
 
         // --->SHOW ALL QUOTES<---
-//        List<QuoteExample> allQuotesResponse = quoterExtendClient.showAllQuotes();
-//        allQuotesResponse.forEach(System.out::println);
+        List<QuoteExample> allQuotesResponse = quoterExtendClient.showAllQuotes();
+        allQuotesResponse.forEach(System.out::println);
 
         // --->GET BY ID<---
-//        QuoteExample byIdResponse = quoterExtendClient.getById(7);
-//        System.out.println(byIdResponse);
+        QuoteExample byIdResponse = quoterExtendClient.getById(3);
+        System.out.println(byIdResponse);
 
         // --->GET RANDOM QUOTE<---
-//        QuoteExample randomQuoteResponse = quoterExtendClient.getRandomQuote();
-//        System.out.println(randomQuoteResponse);
+        QuoteExample randomQuoteResponse = quoterExtendClient.getRandomQuote();
+        System.out.println(randomQuoteResponse);
 
         // --->GET BY PARAM<---
-//        QuoteExample byParamResponse = quoterExtendClient.getByParam(7);
-//        System.out.println(byParamResponse);
+        QuoteExample byParamResponse = quoterExtendClient.getByParam(7);
+        System.out.println(byParamResponse);
 
         // --->GET BY HEADER<---
-//        List<QuoteExample> byHeaderResponse = quoterExtendClient.getByHeader();
-//        byHeaderResponse.forEach(System.out::println);
+        List<QuoteExample> byHeaderResponse = quoterExtendClient.getByHeader();
+        byHeaderResponse.forEach(System.out::println);
 
         // --->ADD QUOTE<---
-//        quoterExtendClient.addQuote("My new Quote 15");
+        quoterExtendClient.addQuote("My new Quote 13");
 
         // --->DELETE BY ID<---
-//        quoterExtendClient.deleteById(14);
+        quoterExtendClient.deleteById(10);
+
     }
 }
