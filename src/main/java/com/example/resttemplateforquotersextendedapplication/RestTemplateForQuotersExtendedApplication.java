@@ -1,5 +1,8 @@
 package com.example.resttemplateforquotersextendedapplication;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,30 +25,54 @@ public class RestTemplateForQuotersExtendedApplication {
     public void makeRequestToQuoterExtendEndpoint() {
 
         // --->SHOW ALL QUOTES<---
-        List<QuoteExample> allQuotesResponse = quoterExtendClient.showAllQuotes();
-        allQuotesResponse.forEach(System.out::println);
+        String allQuotesResponse = quoterExtendClient.showAllQuotes();
+        List<QuoteExample> mapAllQuotesResponse = mapJsonToTypeReference(allQuotesResponse);
+        mapAllQuotesResponse.forEach(System.out::println);
 
         // --->GET BY ID<---
-//        QuoteExample byIdResponse = quoterExtendClient.getById(3);
-//        System.out.println(byIdResponse);
+        String byIdResponse = quoterExtendClient.getById(3);
+        QuoteExample mapByIdResponse = mapJsonToQuoteExample(byIdResponse);
+        System.out.println(mapByIdResponse);
 
         // --->GET RANDOM QUOTE<---
-//        QuoteExample randomQuoteResponse = quoterExtendClient.getRandomQuote();
-//        System.out.println(randomQuoteResponse);
+        String randomQuoteResponse = quoterExtendClient.getRandomQuote();
+        QuoteExample mapRandomQuoteResponse = mapJsonToQuoteExample(randomQuoteResponse);
+        System.out.println(randomQuoteResponse);
 
         // --->GET BY PARAM<---
-//        QuoteExample byParamResponse = quoterExtendClient.getByParam(7);
-//        System.out.println(byParamResponse);
+        String byParamResponse = quoterExtendClient.getByParam(7);
+        QuoteExample mapByParamResponse = mapJsonToQuoteExample(byParamResponse);
+        System.out.println(mapByParamResponse);
 
         // --->GET BY HEADER<---
-//        List<QuoteExample> byHeaderResponse = quoterExtendClient.getByHeader();
-//        byHeaderResponse.forEach(System.out::println);
+        String byHeaderResponse = quoterExtendClient.getByHeader();
+        List<QuoteExample> mapByHeaderResponse = mapJsonToTypeReference(byHeaderResponse);
+        mapByHeaderResponse.forEach(System.out::println);
 
         // --->ADD QUOTE<---
-//        quoterExtendClient.addQuote("My new Quote 13");
+        quoterExtendClient.addQuote("My new Quote 13");
 
         // --->DELETE BY ID<---
-//        quoterExtendClient.deleteById(10);
+        quoterExtendClient.deleteById(10);
 
+    }
+
+    private static List<QuoteExample> mapJsonToTypeReference(String json) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(json, new TypeReference<>() {
+            });
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static QuoteExample mapJsonToQuoteExample(String json) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(json, QuoteExample.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
