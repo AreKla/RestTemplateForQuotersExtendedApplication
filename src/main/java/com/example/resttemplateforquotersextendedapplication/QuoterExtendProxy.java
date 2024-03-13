@@ -78,6 +78,19 @@ public class QuoterExtendProxy {
                 null,
                 String.class);
         String json = response.getBody();
+        return mapJsonToTypeReference(json);
+    }
+
+    private QuoteExample getQuoteExample(String uri) {
+        ResponseEntity<String> exchange = restTemplate.exchange(uri,
+                HttpMethod.GET,
+                null,
+                String.class);
+        String json = exchange.getBody();
+        return mapJsonToQuoteExample(json);
+    }
+
+    private static List<QuoteExample> mapJsonToTypeReference(String json) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             return objectMapper.readValue(json, new TypeReference<>() {
@@ -87,12 +100,7 @@ public class QuoterExtendProxy {
         }
     }
 
-    private QuoteExample getQuoteExample(String uri) {
-        ResponseEntity<String> exchange = restTemplate.exchange(uri,
-                HttpMethod.GET,
-                null,
-                String.class);
-        String json = exchange.getBody();
+    private static QuoteExample mapJsonToQuoteExample(String json) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             return objectMapper.readValue(json, QuoteExample.class);
