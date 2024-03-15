@@ -1,4 +1,4 @@
-package com.example.resttemplateforquotersextendedapplication;
+package com.example.resttemplateforquotersextendedapplication.quoterextend;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.example.resttemplateforquotersextendedapplication;
+package com.example.resttemplateforquotersextendedapplication.quoterextend;
 
 public record QuoteExample(String type, QuoteValue value) {
 

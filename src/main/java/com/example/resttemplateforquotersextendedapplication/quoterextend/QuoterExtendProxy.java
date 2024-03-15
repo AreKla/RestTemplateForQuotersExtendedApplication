@@ -1,4 +1,4 @@
-package com.example.resttemplateforquotersextendedapplication;
+package com.example.resttemplateforquotersextendedapplication.quoterextend;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +25,7 @@ public class QuoterExtendProxy {
         return getResponse(uri);
     }
 
-    public String getById(Integer id) {
+    public String getById(String id) {
         // GET http://localhost:8080/api/{id}
         String uri = url + "/api/" + id;
         return getResponse(uri);
