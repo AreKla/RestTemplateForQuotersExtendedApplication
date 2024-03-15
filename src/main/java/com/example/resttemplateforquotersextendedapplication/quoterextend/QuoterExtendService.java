@@ -13,6 +13,9 @@ public class QuoterExtendService {
     @Autowired
     QuoterExtendProxy quoterExtendClient;
 
+    @Autowired
+    QuoterExtendMapper quoterExtendMapper;
+
     public void allQuotesResponse() {
         String allQuotesResponse = quoterExtendClient.showAllQuotes();
         List<QuoteExample> mapAllQuotesResponse = QuoterExtendMapper.mapJsonToTypeReference(allQuotesResponse);
@@ -21,7 +24,7 @@ public class QuoterExtendService {
 
     public void byIdResponse(String id) {
         String byIdResponse = quoterExtendClient.getById(id);
-        QuoteExample mapByIdResposne = QuoterExtendMapper.mapJsonToQuoteExample(byIdResponse);
+        QuoteExample mapByIdResposne = quoterExtendMapper.mapJsonToQuoteExample(byIdResponse);
         log.info(mapByIdResposne);
     }
 

@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class QuoterExtendMapper {
+class QuoterExtendMapper {
 
-    protected static List<QuoteExample> mapJsonToTypeReference(String json) {
+    static List<QuoteExample> mapJsonToTypeReference(String json) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             return objectMapper.readValue(json, new TypeReference<>() {
@@ -20,7 +20,7 @@ public class QuoterExtendMapper {
         }
     }
 
-    protected static QuoteExample mapJsonToQuoteExample(String json) {
+    static QuoteExample mapJsonToQuoteExample(String json) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             return objectMapper.readValue(json, QuoteExample.class);
