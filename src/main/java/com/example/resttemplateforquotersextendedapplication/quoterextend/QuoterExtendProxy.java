@@ -53,28 +53,19 @@ public class QuoterExtendProxy {
     public void addQuote(String quote) {
         //http://localhost:8080/api/quote
         String uri = url + "/api/quote";
-        ResponseEntity<String> exchange = restTemplate.exchange(uri,
-                HttpMethod.POST,
-                new HttpEntity<>(new QuoteValue(null, quote)),
-                String.class);
+        ResponseEntity<String> exchange = restTemplate.exchange(uri, HttpMethod.POST, new HttpEntity<>(new QuoteValue(null, quote)), String.class);
 
     }
 
     public void deleteById(Integer id) {
         //http://localhost:8080/api/quote/{id}
         String uri = url + "/api/quote/" + id;
-        ResponseEntity<String> exchange = restTemplate.exchange(uri,
-                HttpMethod.DELETE,
-                null,
-                String.class);
+        ResponseEntity<String> exchange = restTemplate.exchange(uri, HttpMethod.DELETE, null, String.class);
     }
 
     private String getResponse(String uri) {
         try {
-            ResponseEntity<String> response = restTemplate.exchange(uri,
-                    HttpMethod.GET,
-                    null,
-                    String.class);
+            ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, null, String.class);
             return response.getBody();
         } catch (RestClientResponseException exception) {
             System.out.println(exception.getStatusText() + " " + exception.getStatusCode().value());

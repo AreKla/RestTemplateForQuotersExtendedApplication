@@ -28,7 +28,7 @@ public class RestTemplateForQuotersExtendedApplication {
         quoterExtendService.byParamResponse(7);
         quoterExtendService.byHeaderResponse();
         quoterExtendService.addQuote("My new Quote 13");
-        quoterExtendService.deleteById(10);
+        quoterExtendService.deleteById(13);
 
     }
 }
