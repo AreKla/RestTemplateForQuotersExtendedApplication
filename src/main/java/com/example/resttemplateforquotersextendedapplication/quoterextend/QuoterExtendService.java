@@ -10,38 +10,40 @@ import java.util.List;
 public class QuoterExtendService {
 
     private final QuoterExtendProxy quoterExtendClient;
+    private final QuoterExtendMapper quoterExtendMapper;
 
-    public QuoterExtendService(QuoterExtendProxy quoterExtendClient) {
+    public QuoterExtendService(QuoterExtendProxy quoterExtendClient, QuoterExtendMapper quoterExtendMapper) {
         this.quoterExtendClient = quoterExtendClient;
+        this.quoterExtendMapper = quoterExtendMapper;
     }
 
     public void allQuotesResponse() {
         String allQuotesResponse = quoterExtendClient.showAllQuotes();
-        List<QuoteExample> mapAllQuotesResponse = QuoterExtendMapper.mapJsonToTypeReference(allQuotesResponse);
+        List<QuoteExample> mapAllQuotesResponse = quoterExtendMapper.mapJsonToTypeReference(allQuotesResponse);
         log.info(mapAllQuotesResponse);
     }
 
     public void byIdResponse(String id) {
         String byIdResponse = quoterExtendClient.getById(id);
-        QuoteExample mapByIdResposne = QuoterExtendMapper.mapJsonToQuoteExample(byIdResponse);
+        QuoteExample mapByIdResposne = quoterExtendMapper.mapJsonToQuoteExample(byIdResponse);
         log.info(mapByIdResposne);
     }
 
     public void randomQuoteResponse() {
         String randomQuoteResponse = quoterExtendClient.getRandomQuote();
-        QuoteExample mapRandomQuoteResponse = QuoterExtendMapper.mapJsonToQuoteExample(randomQuoteResponse);
+        QuoteExample mapRandomQuoteResponse = quoterExtendMapper.mapJsonToQuoteExample(randomQuoteResponse);
         log.info(mapRandomQuoteResponse);
     }
 
     public void byParamResponse(Integer param) {
         String byParamResponse = quoterExtendClient.getByParam(param);
-        QuoteExample mapByParamResponse = QuoterExtendMapper.mapJsonToQuoteExample(byParamResponse);
+        QuoteExample mapByParamResponse = quoterExtendMapper.mapJsonToQuoteExample(byParamResponse);
         log.info(mapByParamResponse);
     }
 
     public void byHeaderResponse() {
         String byHeaderResponse = quoterExtendClient.getByHeader();
-        List<QuoteExample> mapByHeaderResponse = QuoterExtendMapper.mapJsonToTypeReference(byHeaderResponse);
+        List<QuoteExample> mapByHeaderResponse = quoterExtendMapper.mapJsonToTypeReference(byHeaderResponse);
         log.info(mapByHeaderResponse);
     }
 
@@ -52,4 +54,5 @@ public class QuoterExtendService {
     public void deleteById(Integer id) {
         quoterExtendClient.deleteById(id);
     }
+
 }

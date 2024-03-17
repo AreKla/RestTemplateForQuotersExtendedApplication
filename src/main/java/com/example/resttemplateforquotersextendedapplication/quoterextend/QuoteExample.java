@@ -6,4 +6,5 @@ public record QuoteExample(String type, QuoteValue value) {
     public String toString() {
         return "Type: " + type + ", " + value.id().toString() + ": " + value.quote() + "\n";
     }
+
 }
