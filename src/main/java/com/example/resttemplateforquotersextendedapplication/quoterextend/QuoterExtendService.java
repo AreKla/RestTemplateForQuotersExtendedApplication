@@ -17,10 +17,15 @@ public class QuoterExtendService {
         this.quoterExtendMapper = quoterExtendMapper;
     }
 
-    public void allQuotesResponse() {
+    public String allQuotesResponse() {
         String allQuotesResponse = quoterExtendClient.showAllQuotes();
+        if (allQuotesResponse == null) {
+            log.error("allQuotesResponse was null");
+            return "";
+        }
         List<QuoteExample> mapAllQuotesResponse = quoterExtendMapper.mapJsonToTypeReference(allQuotesResponse);
-        log.info(mapAllQuotesResponse);
+        log.info("All QUOTES: " + mapAllQuotesResponse);
+        return mapAllQuotesResponse.toString();
     }
 
     public void byIdResponse(String id) {

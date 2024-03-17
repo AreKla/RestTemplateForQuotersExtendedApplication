@@ -39,7 +39,6 @@ public class QuoterExtendProxy {
         // GET http://localhost:8080/api/random
         String uri = url + "/api/random";
         return getResponse(uri);
-
     }
 
     public String getByParam(Integer param) {
@@ -58,7 +57,6 @@ public class QuoterExtendProxy {
         //http://localhost:8080/api/quote
         String uri = url + "/api/quote";
         ResponseEntity<String> exchange = restTemplate.exchange(uri, HttpMethod.POST, new HttpEntity<>(new QuoteValue(null, quote)), String.class);
-
     }
 
     public void deleteById(Integer id) {
