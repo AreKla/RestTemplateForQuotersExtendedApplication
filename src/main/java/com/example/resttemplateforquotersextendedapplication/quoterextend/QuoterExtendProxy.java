@@ -1,6 +1,6 @@
 package com.example.resttemplateforquotersextendedapplication.quoterextend;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -11,10 +11,14 @@ import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
 @Component
+@Log4j2
 public class QuoterExtendProxy {
 
-    @Autowired
     RestTemplate restTemplate;
+
+    public QuoterExtendProxy(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @Value("${quote-extend}")
     String url;
@@ -68,9 +72,9 @@ public class QuoterExtendProxy {
             ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, null, String.class);
             return response.getBody();
         } catch (RestClientResponseException exception) {
-            System.out.println(exception.getStatusText() + " " + exception.getStatusCode().value());
+            log.error(exception.getStatusText() + " " + exception.getStatusCode().value());
         } catch (RestClientException exception) {
-            System.out.println(exception.getMessage());
+            log.error(exception.getMessage());
         }
         return null;
     }

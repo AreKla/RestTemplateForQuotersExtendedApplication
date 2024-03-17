@@ -1,7 +1,6 @@
 package com.example.resttemplateforquotersextendedapplication.quoterextend;
 
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,11 +9,11 @@ import java.util.List;
 @Log4j2
 public class QuoterExtendService {
 
-    @Autowired
-    QuoterExtendProxy quoterExtendClient;
+    private final QuoterExtendProxy quoterExtendClient;
 
-    @Autowired
-    QuoterExtendMapper quoterExtendMapper;
+    public QuoterExtendService(QuoterExtendProxy quoterExtendClient) {
+        this.quoterExtendClient = quoterExtendClient;
+    }
 
     public void allQuotesResponse() {
         String allQuotesResponse = quoterExtendClient.showAllQuotes();
@@ -24,7 +23,7 @@ public class QuoterExtendService {
 
     public void byIdResponse(String id) {
         String byIdResponse = quoterExtendClient.getById(id);
-        QuoteExample mapByIdResposne = quoterExtendMapper.mapJsonToQuoteExample(byIdResponse);
+        QuoteExample mapByIdResposne = QuoterExtendMapper.mapJsonToQuoteExample(byIdResponse);
         log.info(mapByIdResposne);
     }
 
