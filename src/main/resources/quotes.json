@@ -1,0 +1,37 @@
+[
+  {
+    "type": "success",
+    "value": {
+      "id": 13,
+      "quote": "MyQuote!!!Spring Boot makes development a breeze, it's like having a personal assistant for your Java projects."
+    }
+  },
+  {
+    "type": "success",
+    "value": {
+      "id": 14,
+      "quote": "MyQuote!!!With Spring Boot, the days of configuration nightmares are over. It simplifies the entire process, leaving developers to focus on what matters most - building great software."
+    }
+  },
+  {
+    "type": "success",
+    "value": {
+      "id": 15,
+      "quote": "MyQuote!!!Spring Boot's convention-over-configuration approach streamlines development, allowing developers to spend less time on boilerplate code and more time on solving real problems."
+    }
+  },
+  {
+    "type": "success",
+    "value": {
+      "id": 16,
+      "quote": "MyQuote!!!Gone are the days of XML hell and endless configuration files. Spring Boot's auto-configuration feature handles the heavy lifting, allowing developers to hit the ground running."
+    }
+  },
+  {
+    "type": "success",
+    "value": {
+      "id": 17,
+      "quote": "MyQuote!!!Spring Boot's flexibility and simplicity make it a game-changer for Java developers. Whether you're building a small prototype or a large-scale application, Spring Boot has you covered."
+    }
+  }
+]
