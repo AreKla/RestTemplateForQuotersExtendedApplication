@@ -56,7 +56,7 @@ public class QuoterExtendProxy {
     public void addQuote(String quote) {
         //http://localhost:8080/api/quote
         String uri = url + "/api/quote";
-        ResponseEntity<String> exchange = restTemplate.exchange(uri, HttpMethod.POST, new HttpEntity<>(new QuoteValue(null, quote)), String.class);
+        ResponseEntity<String> exchange = restTemplate.exchange(uri, HttpMethod.POST, new HttpEntity<>(new QuoterQuoteValue(null, quote)), String.class);
     }
 
     public void deleteById(Integer id) {

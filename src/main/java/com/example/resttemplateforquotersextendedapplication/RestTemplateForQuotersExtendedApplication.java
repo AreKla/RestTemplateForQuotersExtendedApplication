@@ -25,10 +25,10 @@ public class RestTemplateForQuotersExtendedApplication {
     public void makeRequestToQuoterExtendEndpoint() {
 
         log.info(quoterExtendService.allQuotesResponse());
-        log.info(quoterExtendService.byIdResponse("14"));
-        log.info(quoterExtendService.randomQuoteResponse());
-        log.info(quoterExtendService.byParamResponse(7));
-        log.info(quoterExtendService.byHeaderResponse());
+        log.info(quoterExtendService.getQuoteById("14"));
+        log.info(quoterExtendService.getRandomQuoteResponse());
+        log.info(quoterExtendService.getQuoteByParam(7));
+        log.info(quoterExtendService.getQuotesByHeaderResponse());
         quoterExtendService.addQuote("My new Quote 15");
         quoterExtendService.deleteById(14);
     }

@@ -12,15 +12,15 @@ import java.util.List;
 
 @Component
 @Log4j2
-class QuoterExtendMapper {
+class QuoterExtendJsonMapper {
 
     private final ObjectMapper objectMapper;
 
-    public QuoterExtendMapper(ObjectMapper objectMapper) {
+    public QuoterExtendJsonMapper(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
-    List<QuoteExample> mapJsonToTypeReference(String json) {
+    List<QuoterQuote> mapJsonToTypeReference(String json) {
         try {
             return objectMapper.readValue(json, new TypeReference<>() {
             });
@@ -30,12 +30,12 @@ class QuoterExtendMapper {
         }
     }
 
-    QuoteExample mapJsonToQuoteExample(String json) {
+    QuoterQuote mapJsonToQuoteExample(String json) {
         try {
-            return objectMapper.readValue(json, QuoteExample.class);
+            return objectMapper.readValue(json, QuoterQuote.class);
         } catch (JsonProcessingException e) {
             log.error("QuoterExtendMapper could not map json");
-            return new QuoteExample(null, null);
+            return new QuoterQuote(null, null);
         }
     }
 

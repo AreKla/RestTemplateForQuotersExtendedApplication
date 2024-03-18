@@ -11,50 +11,51 @@ import java.util.List;
 public class QuoterExtendService {
 
     private final QuoterExtendProxy quoterExtendClient;
-    private final QuoterExtendMapper quoterExtendMapper;
+    private final QuoterExtendJsonMapper quoterExtendJsonMapper;
 
-    public QuoterExtendService(QuoterExtendProxy quoterExtendClient, QuoterExtendMapper quoterExtendMapper) {
+    public QuoterExtendService(QuoterExtendProxy quoterExtendClient, QuoterExtendJsonMapper quoterExtendJsonMapper) {
         this.quoterExtendClient = quoterExtendClient;
-        this.quoterExtendMapper = quoterExtendMapper;
+        this.quoterExtendJsonMapper = quoterExtendJsonMapper;
     }
 
-    public List<QuoteExample> allQuotesResponse() {
+    public List<QuoterQuote> allQuotesResponse() {
         String allQuotesResponse = quoterExtendClient.showAllQuotes();
         if (allQuotesResponse == null) {
-            log.error("allQuotesResponse was null");
+            log.error("Failed to retrieve all quotes. The response was null." +
+                    "Please check the connection or the availability of quotes.");
             return Collections.emptyList();
         }
-        return quoterExtendMapper.mapJsonToTypeReference(allQuotesResponse);
+        return quoterExtendJsonMapper.mapJsonToTypeReference(allQuotesResponse);
     }
 
-    public QuoteExample byIdResponse(String id) {
-        String byIdResponse = quoterExtendClient.getById(id);
-        return quoterExtendMapper.mapJsonToQuoteExample(byIdResponse);
+    public QuoterQuote getQuoteById(String id) {
+        String getQuoteByIdResponse = quoterExtendClient.getById(id);
+        return quoterExtendJsonMapper.mapJsonToQuoteExample(getQuoteByIdResponse);
     }
 
-    public QuoteExample randomQuoteResponse() {
-        String randomQuoteResponse = quoterExtendClient.getRandomQuote();
-        return quoterExtendMapper.mapJsonToQuoteExample(randomQuoteResponse);
+    public QuoterQuote getRandomQuoteResponse() {
+        String getRandomQuoteResponse = quoterExtendClient.getRandomQuote();
+        return quoterExtendJsonMapper.mapJsonToQuoteExample(getRandomQuoteResponse);
     }
 
-    public QuoteExample byParamResponse(Integer param) {
-        String byParamResponse = quoterExtendClient.getByParam(param);
-        return quoterExtendMapper.mapJsonToQuoteExample(byParamResponse);
+    public QuoterQuote getQuoteByParam(Integer param) {
+        String getQuoteByParamResponse = quoterExtendClient.getByParam(param);
+        return quoterExtendJsonMapper.mapJsonToQuoteExample(getQuoteByParamResponse);
     }
 
-    public List<QuoteExample> byHeaderResponse() {
-        String byHeaderResponse = quoterExtendClient.getByHeader();
-        return quoterExtendMapper.mapJsonToTypeReference(byHeaderResponse);
+    public List<QuoterQuote> getQuotesByHeaderResponse() {
+        String getQuotesByHeaderResponse = quoterExtendClient.getByHeader();
+        return quoterExtendJsonMapper.mapJsonToTypeReference(getQuotesByHeaderResponse);
     }
 
     public void addQuote(String quote) {
         quoterExtendClient.addQuote(quote);
-        log.info("You added quote:\n" + quote);
+        log.info("Successfully added the following quote: " + quote);
     }
 
     public void deleteById(Integer id) {
         quoterExtendClient.deleteById(id);
-        log.info("You deleted quote by " + id + " id");
+        log.info("Successfully deleted the quote with ID: " + id);
     }
 
 }

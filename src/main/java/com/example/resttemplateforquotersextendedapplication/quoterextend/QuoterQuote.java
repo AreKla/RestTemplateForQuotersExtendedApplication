@@ -1,6 +1,6 @@
 package com.example.resttemplateforquotersextendedapplication.quoterextend;
 
-public record QuoteExample(String type, QuoteValue value) {
+public record QuoterQuote(String type, QuoterQuoteValue value) {
 
     @Override
     public String toString() {

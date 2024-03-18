@@ -1,4 +1,4 @@
 package com.example.resttemplateforquotersextendedapplication.quoterextend;
 
-public record QuoteValue(Long id, String quote) {
+public record QuoterQuoteValue(Long id, String quote) {
 }
