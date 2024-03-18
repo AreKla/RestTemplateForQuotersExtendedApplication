@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @Log4j2
 public class QuoterExtendProxy {
 
-    RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     public QuoterExtendProxy(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;

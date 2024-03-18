@@ -1,5 +1,6 @@
 package com.example.resttemplateforquotersextendedapplication;
 
+import com.example.resttemplateforquotersextendedapplication.quoterextend.QuoteViewerService;
 import com.example.resttemplateforquotersextendedapplication.quoterextend.QuoterExtendService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +12,7 @@ import org.springframework.context.event.EventListener;
 @Log4j2
 public class RestTemplateForQuotersExtendedApplication {
 
-    QuoterExtendService quoterExtendService;
+    private final QuoterExtendService quoterExtendService;
 
     public RestTemplateForQuotersExtendedApplication(QuoterExtendService quoterExtendService) {
         this.quoterExtendService = quoterExtendService;

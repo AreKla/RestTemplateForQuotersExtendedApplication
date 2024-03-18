@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 @Log4j2
-public class QuoterExtendService {
+public class QuoterExtendService implements QuoteFetchable{
 
     private final QuoterExtendProxy quoterExtendClient;
     private final QuoterExtendJsonMapper quoterExtendJsonMapper;
@@ -58,4 +58,10 @@ public class QuoterExtendService {
         log.info("Successfully deleted the quote with ID: " + id);
     }
 
+    @Override
+    public List<Quote> fetchAllQuotes() {
+        List<QuoterQuote> quoterQuoteList = allQuotesResponse();
+        List<Quote> quoterQuoteCollect = quoterQuoteList.stream().map(quoterQuote -> new Quote(quoterQuote.value().quote())).toList();
+        return quoterQuoteCollect;
+    }
 }
