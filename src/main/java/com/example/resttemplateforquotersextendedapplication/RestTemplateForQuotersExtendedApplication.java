@@ -24,13 +24,13 @@ public class RestTemplateForQuotersExtendedApplication {
     @EventListener(ApplicationStartedEvent.class)
     public void makeRequestToQuoterExtendEndpoint() {
 
-        quoterExtendService.allQuotesResponse();
-        quoterExtendService.byIdResponse("3");
-        quoterExtendService.randomQuoteResponse();
-        quoterExtendService.byParamResponse(7);
-        quoterExtendService.byHeaderResponse();
-        quoterExtendService.addQuote("My new Quote 13");
-        quoterExtendService.deleteById(13);
+        log.info(quoterExtendService.allQuotesResponse());
+        log.info(quoterExtendService.byIdResponse("14"));
+        log.info(quoterExtendService.randomQuoteResponse());
+        log.info(quoterExtendService.byParamResponse(7));
+        log.info(quoterExtendService.byHeaderResponse());
+        quoterExtendService.addQuote("My new Quote 15");
+        quoterExtendService.deleteById(14);
     }
 
 }
