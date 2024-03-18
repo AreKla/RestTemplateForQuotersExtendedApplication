@@ -13,9 +13,11 @@ import org.springframework.context.event.EventListener;
 public class RestTemplateForQuotersExtendedApplication {
 
     private final QuoterExtendService quoterExtendService;
+    private final QuoteViewerService quoteViewerService;
 
-    public RestTemplateForQuotersExtendedApplication(QuoterExtendService quoterExtendService) {
+    public RestTemplateForQuotersExtendedApplication(QuoterExtendService quoterExtendService, QuoteViewerService quoteViewerService) {
         this.quoterExtendService = quoterExtendService;
+        this.quoteViewerService = quoteViewerService;
     }
 
     public static void main(String[] args) {
@@ -32,6 +34,8 @@ public class RestTemplateForQuotersExtendedApplication {
         log.info(quoterExtendService.getQuotesByHeaderResponse());
         quoterExtendService.addQuote("My new Quote 15");
         quoterExtendService.deleteById(14);
+        log.info(quoteViewerService.fetchAllQuotes());
+
     }
 
 }
