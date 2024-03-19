@@ -3,6 +3,7 @@ package com.example.resttemplateforquotersextendedapplication.quoterextend;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
@@ -12,13 +13,10 @@ import java.util.List;
 
 @Component
 @Log4j2
+@AllArgsConstructor
 class QuoterExtendJsonMapper {
 
     private final ObjectMapper objectMapper;
-
-    public QuoterExtendJsonMapper(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
-    }
 
     List<QuoterQuote> mapJsonToTypeReference(String json) {
         try {
