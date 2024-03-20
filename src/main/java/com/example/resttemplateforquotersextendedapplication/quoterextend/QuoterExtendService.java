@@ -2,6 +2,7 @@ package com.example.resttemplateforquotersextendedapplication.quoterextend;
 
 import com.example.resttemplateforquotersextendedapplication.fromfilequotereader.Quote;
 import com.example.resttemplateforquotersextendedapplication.fromfilequotereader.QuoteFetchable;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -10,15 +11,11 @@ import java.util.List;
 
 @Service
 @Log4j2
+@AllArgsConstructor
 public class QuoterExtendService implements QuoteFetchable {
 
     private final QuoterExtendProxy quoterExtendClient;
     private final QuoterExtendJsonMapper quoterExtendJsonMapper;
-
-    public QuoterExtendService(QuoterExtendProxy quoterExtendClient, QuoterExtendJsonMapper quoterExtendJsonMapper) {
-        this.quoterExtendClient = quoterExtendClient;
-        this.quoterExtendJsonMapper = quoterExtendJsonMapper;
-    }
 
     public List<QuoterQuote> allQuotesResponse() {
         String allQuotesResponse = quoterExtendClient.showAllQuotes();
