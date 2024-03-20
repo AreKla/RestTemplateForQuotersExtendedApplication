@@ -1,6 +1,6 @@
 package com.example.resttemplateforquotersextendedapplication;
 
-import com.example.resttemplateforquotersextendedapplication.quoterextend.QuoteViewerService;
+import com.example.resttemplateforquotersextendedapplication.fromfilequotereader.QuoteViewerService;
 import com.example.resttemplateforquotersextendedapplication.quoterextend.QuoterExtendService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.SpringApplication;

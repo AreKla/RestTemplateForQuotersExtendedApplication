@@ -1,4 +1,4 @@
-package com.example.resttemplateforquotersextendedapplication.quoterextend;
+package com.example.resttemplateforquotersextendedapplication.fromfilequotereader;
 
 import org.springframework.stereotype.Service;
 
