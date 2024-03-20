@@ -1,4 +1,4 @@
-package com.example.resttemplateforquotersextendedapplication.quoterextend;
+package com.example.resttemplateforquotersextendedapplication.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;

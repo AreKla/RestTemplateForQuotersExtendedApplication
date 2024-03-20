@@ -1,5 +1,7 @@
-package com.example.resttemplateforquotersextendedapplication.fromfilequotereader;
+package com.example.resttemplateforquotersextendedapplication;
 
+import com.example.resttemplateforquotersextendedapplication.fromfilequotereader.Quote;
+import com.example.resttemplateforquotersextendedapplication.fromfilequotereader.QuoteFetchable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
